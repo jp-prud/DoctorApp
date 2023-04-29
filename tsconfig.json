@@ -2,6 +2,7 @@
   "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
+    "types": ["styled-components-react-native"],
     "paths": {
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
@@ -16,3 +17,4 @@
     }
   }
 }
+
