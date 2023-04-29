@@ -19,8 +19,6 @@ class AppointmentsService {
   }
 
   listAppointments() {
-    console.log('entrou service');
-
     return this.storageClient.list<AppointmentDTO>();
   }
 
