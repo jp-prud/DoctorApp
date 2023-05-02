@@ -2,7 +2,7 @@ import styled, {css} from 'styled-components/native';
 import {ScreenButtonProps} from '.';
 
 export const Container = styled.View<Partial<ScreenButtonProps>>`
-  flex: 1;
+  min-width: 150px;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -23,7 +23,6 @@ export const Indicator = styled.View`
   height: 1.5px;
   background: ${({theme}) => theme.COLORS.GRAY_400};
   border-radius: 2px;
-  margin-top: 4px;
   position: absolute;
-  bottom: 8px;
+  bottom: -4px;
 `;
