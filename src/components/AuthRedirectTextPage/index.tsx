@@ -1,7 +1,7 @@
-import { useNavigation } from "@react-navigation/native";
-import { RoutesPathOptions } from "src/@types/navigation";
+import {useNavigation} from '@react-navigation/native';
+import {RoutesPathOptions} from 'src/@types/navigation';
 
-import { TextWrapper, Description, CTA } from "./styles";
+import {TextWrapper, Description, CTA} from './styles';
 
 interface AuthRedirectTextPageProps {
   description: string;
@@ -14,7 +14,7 @@ interface AuthRedirectTextPageProps {
 
 export function AuthRedirectTextPage({
   description,
-  toScreen: { text, path, params },
+  toScreen: {text, path, params},
 }: AuthRedirectTextPageProps) {
   const navigation = useNavigation();
 
@@ -30,10 +30,7 @@ export function AuthRedirectTextPage({
         onPress={handleClickRedirect}
         title={text}
         size="SM"
-        variant="outline"
-      >
-        {text}
-      </CTA>
+        variant="link"></CTA>
     </TextWrapper>
   );
 }
