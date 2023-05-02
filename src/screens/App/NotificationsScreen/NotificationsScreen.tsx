@@ -41,7 +41,9 @@ export function NotificationsScreen() {
 
     return (
       <View>
-        <Text style={{marginBottom: 8}} weight='500'>{currentFormatedDate}</Text>
+        <Text style={{marginBottom: 8}} weight="500">
+          {currentFormatedDate}
+        </Text>
 
         <FlatList
           data={notifications}
@@ -61,13 +63,13 @@ export function NotificationsScreen() {
 
   return (
     <Container>
-      <Heading title="Notificações" size="XL" hasBackButton />
+      <Heading title="Notificações" hasBackButton />
 
       <FlatList
         data={notificationsList}
         keyExtractor={({date}: NotificationGroup) => date}
         renderItem={renderNotificationDayContainer}
-        style={{marginTop: 24, marginBottom: 8}}
+        style={{marginBottom: 8}}
         ItemSeparatorComponent={<Separator />}
       />
     </Container>
