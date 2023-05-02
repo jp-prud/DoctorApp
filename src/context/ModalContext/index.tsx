@@ -2,13 +2,9 @@ import {createContext, useContext, useState, useCallback} from 'react';
 
 import {IModalContext, IModalProvider} from './types';
 
-const ModalContext = createContext<IModalContext>({
-  isOpenModal: false,
-  handleClickOpenModal() {},
-  handleClickCloseModal() {},
-});
+const ModalContext = createContext<IModalContext>({} as IModalContext);
 
-function RenderModalProvider({children}: IModalProvider) {
+function ModalContextProvider({children}: IModalProvider) {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const handleClickOpenModal = useCallback(() => setIsOpenModal(true), []);
@@ -33,4 +29,4 @@ function useModalContext() {
   return context;
 }
 
-export {RenderModalProvider, useModalContext};
+export {ModalContextProvider, useModalContext};
