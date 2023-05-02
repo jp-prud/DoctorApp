@@ -5,12 +5,15 @@ import {ButtonProps} from './types';
 export const Container = styled.TouchableOpacity<Partial<ButtonProps>>`
   align-items: center;
   justify-content: center;
-  padding-left: 16px;
-  padding-right: 16px;
   border-radius: 8px;
   white-space: nowrap;
   outline: transparent solid 2px;
   outline-offset: 2px;
+
+  ${({theme}) => css`
+    padding-left: ${theme.SIZE.MD}px;
+    padding-right: ${theme.SIZE.MD}px;
+  `};
 
   ${({block}) =>
     block &&
@@ -25,23 +28,20 @@ export const Container = styled.TouchableOpacity<Partial<ButtonProps>>`
   ${({theme, variant}) =>
     (variant === 'solid' &&
       css`
-        background: ${theme.COLORS.GRAY_600};
+        background: ${theme.COLORS.BLUE};
       `) ||
     (variant === 'outline' &&
       css`
         background: transparent;
-        color: ${theme.COLORS.GRAY_600};
-        border-color: ${theme.COLORS.GRAY_600};
+        border-color: ${theme.COLORS.BLUE};
       `) ||
     (variant === 'ghost' &&
       css`
         background: transparent;
-        color: ${theme.COLORS.GRAY_600};
       `) ||
     (variant === 'link' &&
       css`
         background: transparent;
-        color: ${theme.COLORS.GRAY_500};
       `)}
 `;
 
@@ -55,14 +55,14 @@ export const Title = styled.Text<Partial<ButtonProps>>`
   ${({theme, variant}) =>
     (variant === 'outline' &&
       css`
-        color: ${theme.COLORS.GRAY_600};
+        color: ${theme.COLORS.BLUE};
       `) ||
     (variant === 'ghost' &&
       css`
-        color: ${theme.COLORS.GRAY_600};
+        color: ${theme.COLORS.BLUE};
       `) ||
     (variant === 'link' &&
       css`
-        color: ${theme.COLORS.GRAY_500};
+        color: ${theme.COLORS.BLUE};
       `)}
 `;
