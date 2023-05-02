@@ -15,7 +15,7 @@ export const Description = styled.Text`
 `;
 
 export const CTA = styled(Button)`
-  height: 20px;
   padding-left: 4px;
   padding-right: 4px;
+  font-size: 14px;
 `;
