@@ -6,6 +6,7 @@ export declare global {
       forgotPassword: string;
       orders: string;
       profile: string;
+      History: string;
       appointment: string;
       appointmentsList: string;
     }
@@ -18,4 +19,5 @@ export type RoutesPathOptions =
   | 'forgotPassword'
   | 'orders'
   | 'profile'
-  | 'AppointmentView';
+  | 'History'
+  | 'appointment';
