@@ -1,5 +1,6 @@
 export default {
   COLORS: {
+    BLUE: '#4F48ED',
     WHITE: '#FAFAFA',
     GREEN_700: '#00875F',
     GREEN_500: '#00B37E',
@@ -32,5 +33,7 @@ export default {
     '4X': 42,
     '5X': 46,
     '6X': 52,
+    '7X': 56,
+    '8X': 64,
   },
 };
