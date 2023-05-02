@@ -1,11 +1,12 @@
-import {Alert} from 'react-native';
+import {View} from 'react-native';
+
 import {useForm} from 'react-hook-form';
 
 import * as Yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 
 import {Button} from '@components/atomic/Button';
-import {Container, ButtonWrapper, Form} from './styles';
+import {Container, FooterWrapper, Form} from './styles';
 
 import {Heading} from '@components/atomic/Heading';
 import {AuthRedirectTextPage} from '@components/AuthRedirectTextPage';
@@ -13,6 +14,11 @@ import {AuthRedirectTextPage} from '@components/AuthRedirectTextPage';
 import {ControlledTextInput} from '@components/Controller/ControlledTextInput';
 
 import {useAuthContext} from '@context/AuthContext';
+import {Text} from '@components/atomic/Text';
+
+import {useTheme} from 'styled-components/native';
+
+import {useNavigation} from '@react-navigation/native';
 
 interface RegisterFormProps {
   username: string;
@@ -33,8 +39,11 @@ const formSchema = Yup.object().shape({
 export function RegisterScreen() {
   const {authLoading, loginConsumer} = useAuthContext();
 
-  const {control, handleSubmit} = useForm<RegisterFormProps>({
-    mode: 'onBlur',
+  const navigation = useNavigation();
+  const theme = useTheme();
+
+  const {control, handleSubmit, resetField} = useForm<RegisterFormProps>({
+    mode: 'onChange',
     resolver: yupResolver(formSchema),
   });
 
@@ -44,7 +53,11 @@ export function RegisterScreen() {
 
   return (
     <Container>
-      <Heading title="Bem-vindo(a) de volta!" size="XXL" />
+      <Heading
+        title="Boas vindas!"
+        subtitle="Para continuarmos, precisamos que você insira seus dados de acesso"
+        hasBackButton
+      />
 
       <Form>
         <ControlledTextInput
@@ -55,6 +68,7 @@ export function RegisterScreen() {
           label="Seu nome completo"
           name="username"
           placeholder="Nome Completo"
+          handleResetField={resetField}
         />
 
         <ControlledTextInput
@@ -68,7 +82,7 @@ export function RegisterScreen() {
           inputMode="email"
           textContentType="emailAddress"
           keyboardType="email-address"
-          isSibling
+          handleResetField={resetField}
         />
 
         <ControlledTextInput
@@ -81,10 +95,10 @@ export function RegisterScreen() {
           placeholder="Digite sua senha"
           textContentType="password"
           secureTextEntry
-          isSibling
+          handleResetField={resetField}
         />
 
-        <ButtonWrapper>
+        <FooterWrapper>
           <Button
             title="Registrar"
             variant="solid"
@@ -93,7 +107,20 @@ export function RegisterScreen() {
             isLoading={authLoading}
             onPress={handleSubmit(handleClickSubmit)}
           />
-        </ButtonWrapper>
+
+          <View style={{width: 260}}>
+            <Text align="center" size="SM" style={{marginTop: theme.SIZE.MD}}>
+              Ao clicar em "Registar" você aceita nossos{' '}
+              <Text
+                size="SM"
+                weight="700"
+                color="BLUE"
+                onPress={() => navigation.navigate('terms-and-conditions')}>
+                Termos e condições
+              </Text>
+            </Text>
+          </View>
+        </FooterWrapper>
       </Form>
 
       <AuthRedirectTextPage
