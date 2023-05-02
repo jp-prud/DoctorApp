@@ -1,15 +1,18 @@
-import {useForm, Controller} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
 import {Heading} from '@components/atomic/Heading';
 import {AuthRedirectTextPage} from '@components/AuthRedirectTextPage';
 import {Button} from '@components/atomic/Button';
-
-import {Container, Form, ButtonWrapper} from './styles';
-import React from 'react';
 import {ControlledTextInput} from '@components/Controller/ControlledTextInput';
 import {useAuthContext} from '@context/AuthContext';
+import {Text} from '@components/atomic/Text';
+
+import {Container, Form, FooterWrapper} from './styles';
+
+import {useNavigation} from '@react-navigation/native';
+
 interface LoginFormProps {
   email: string;
   password: string;
@@ -27,8 +30,10 @@ const formSchema = Yup.object().shape({
 export function AccountScreen() {
   const {authLoading, loginConsumer} = useAuthContext();
 
-  const {control, handleSubmit} = useForm<LoginFormProps>({
-    mode: 'onBlur',
+  const navigation = useNavigation();
+
+  const {control, handleSubmit, resetField} = useForm<LoginFormProps>({
+    mode: 'onChange',
     resolver: yupResolver(formSchema),
   });
 
@@ -39,9 +44,8 @@ export function AccountScreen() {
   return (
     <Container>
       <Heading
-        content="Bem-vindo(a) de volta!"
-        size="XXL"
-        subtitle="Não se preocupe! Insira o endereço de e-mail vinculado à sua conta."
+        title="Boas vindas!"
+        subtitle="Para continuarmos, precisamos que você insira seus dados de acesso"
       />
 
       <Form>
@@ -56,6 +60,7 @@ export function AccountScreen() {
           inputMode="email"
           textContentType="emailAddress"
           keyboardType="email-address"
+          handleResetField={resetField}
         />
 
         <ControlledTextInput
@@ -68,10 +73,10 @@ export function AccountScreen() {
           label="Senha"
           textContentType="password"
           secureTextEntry
-          isSibling
+          handleResetField={resetField}
         />
 
-        <ButtonWrapper>
+        <FooterWrapper>
           <Button
             title="Entrar"
             size="5X"
@@ -80,7 +85,17 @@ export function AccountScreen() {
             isLoading={authLoading}
             onPress={handleSubmit(handleClickSubmit)}
           />
-        </ButtonWrapper>
+
+          <Text>
+            Esqueceu a senha ?{' '}
+            <Text
+              weight="700"
+              color="BLUE"
+              onPress={() => navigation.navigate('forgot-password')}>
+              Recupere-a.
+            </Text>
+          </Text>
+        </FooterWrapper>
       </Form>
 
       <AuthRedirectTextPage
