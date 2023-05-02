@@ -8,7 +8,7 @@ export interface ScreenButtonProps {
   isActive?: boolean;
 }
 
-export function ScreenButton({title, renderIcon, isActive}: ScreenButtonProps) {
+export function ScreenTabBarButton({title, renderIcon, isActive}: ScreenButtonProps) {
   return (
     <Container isActive={isActive}>
       <RenderIconWrapper>{renderIcon}</RenderIconWrapper>
