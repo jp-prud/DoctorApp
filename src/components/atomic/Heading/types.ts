@@ -1,7 +1,8 @@
 import { Size } from "src/@types/styled";
 
 export type TitleProps = {
-  content: string;
-  size: Size;
+  title: string;
   subtitle?: string;
+  size: Size;
+  hasBackButton?: boolean;
 };
