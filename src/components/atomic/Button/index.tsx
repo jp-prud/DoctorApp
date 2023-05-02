@@ -4,7 +4,12 @@ import {Container, Title} from './styles';
 
 import {ButtonProps} from './types';
 
-export function Button({title, isLoading, variant, ...rest}: ButtonProps) {
+export function Button({
+  title,
+  isLoading,
+  variant = 'solid',
+  ...rest
+}: ButtonProps) {
   return (
     <Container variant={variant} {...rest}>
       {isLoading ? (
