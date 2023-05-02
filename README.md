@@ -1,0 +1,8 @@
+Introdução
+
+O envelhecimento da população é uma realidade mundial e, com o aumento da expectativa de vida, os cuidados com a saúde tornam-se ainda mais importantes, incluindo a realização de consultas médicas regulares. No entanto, os idosos frequentemente enfrentam desafios ao tentar agendar consultas médicas, como dificuldades de locomoção, falta de familiaridade com tecnologia ou barreiras de comunicação. Nesse contexto, desenvolvemos um aplicativo/sistema que otimiza o agendamento de consultas médicas para usuários idosos.
+Objetivo
+
+O objetivo desse sistema é oferecer uma plataforma intuitiva e “user-friendly” que facilite o agendamento de consultas médicas por meio de uma rede de profissionais de saúde credenciados. Os usuários idosos poderão acessar o aplicativo/sistema por meio de seus dispositivos móveis, permitindo que agendem consultas com profissionais ou estabelecimentos de saúde de forma rápida e conveniente, diretamente pela palma de suas mãos. A plataforma possibilitará a busca de profissionais de saúde com base em critérios específicos, como especialidades, localização, avaliações de outros pacientes e outros requisitos relevantes para os usuários idosos. Além disso, o sistema oferece recursos adicionais, como lembretes de consulta, teleconsulta, suporte para cuidadores, opções de pagamento simplificadas e programas de fidelidade.
+
+Para os profissionais de saúde credenciados, a interface administrativa permitirá que gerenciem suas atividades clínicas por meio do sistema, incluindo o registro e documentação das consultas, gerenciamento de horários de atendimento, acesso a avaliações e feedbacks dos pacientes, entre outras funcionalidades.
