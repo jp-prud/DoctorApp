@@ -1,10 +1,10 @@
 import {useCallback, useState} from 'react';
-import {Alert} from 'react-native';
+import {Alert, View} from 'react-native';
 
 import {useForm, Controller} from 'react-hook-form';
 
 import Input from '@components/atomic/Input';
-import {Form} from '@screens/Auth/Account/styles';
+import {Form} from '@screens/Auth/AccountScreen/styles';
 import {FormGroup} from '@components/atomic/FormGroup';
 import {Button} from '@components/atomic/Button';
 
@@ -77,10 +77,9 @@ export function AppointmentForm({
           required: 'Você deve informar um endereço',
         }}
         render={({field: {onChange, value}}) => (
-          <FormGroup error={errors.address}>
+          <FormGroup label="Endereço" error={errors.address}>
             <Input
               placeholder="Endereço"
-              placeholderTextColor="#666"
               onChangeText={onChange}
               value={value}
               textContentType="fullStreetAddress"
@@ -97,10 +96,9 @@ export function AppointmentForm({
         //   required: 'Você deve informar um horário',
         // }}
         render={() => (
-          <FormGroup isSibling error={errors.date}>
+          <FormGroup label="Horário" error={errors.date}>
             <Input
               placeholder="Horário"
-              placeholderTextColor="#666"
               onFocus={handleOpenDateModal}
               onPress={handleOpenDateModal}
               showSoftInputOnFocus={false}
@@ -127,7 +125,7 @@ export function AppointmentForm({
         )}
       />
 
-      <FormGroup isSibling>
+      <View styles={{marginTop: 8}}>
         <Button
           onPress={handleSubmit(onSubmit)}
           title="Salvar"
@@ -136,7 +134,7 @@ export function AppointmentForm({
           isLoading={formIsLoading}>
           Salvar
         </Button>
-      </FormGroup>
+      </View>
     </Form>
   );
 }
