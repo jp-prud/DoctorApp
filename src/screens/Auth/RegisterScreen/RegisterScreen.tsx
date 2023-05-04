@@ -1,24 +1,20 @@
 import {View} from 'react-native';
 
 import {useForm} from 'react-hook-form';
-
 import * as Yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {useAuthContext} from '@context/AuthContext';
+import {useTheme} from 'styled-components/native';
+import {useNavigation} from '@react-navigation/native';
 
 import {Button} from '@components/atomic/Button';
-import {Container, FooterWrapper, Form} from './styles';
-
 import {Heading} from '@components/atomic/Heading';
 import {AuthRedirectTextPage} from '@components/AuthRedirectTextPage';
-
 import {ControlledTextInput} from '@components/Controller/ControlledTextInput';
-
-import {useAuthContext} from '@context/AuthContext';
+import {ControlledPasswordInput} from '@components/Controller/ControlledPasswordInput';
 import {Text} from '@components/atomic/Text';
 
-import {useTheme} from 'styled-components/native';
-
-import {useNavigation} from '@react-navigation/native';
+import {Container, FooterWrapper, Form} from './styles';
 
 interface RegisterFormProps {
   username: string;
@@ -85,7 +81,7 @@ export function RegisterScreen() {
           handleResetField={resetField}
         />
 
-        <ControlledTextInput
+        <ControlledPasswordInput
           control={control}
           rules={{
             required: true,
@@ -93,9 +89,6 @@ export function RegisterScreen() {
           name="password"
           label="Senha"
           placeholder="Digite sua senha"
-          textContentType="password"
-          secureTextEntry
-          handleResetField={resetField}
         />
 
         <FooterWrapper>

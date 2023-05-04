@@ -1,17 +1,18 @@
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import {useNavigation} from '@react-navigation/native';
+
+import {useAuthContext} from '@context/AuthContext';
 
 import {Heading} from '@components/atomic/Heading';
 import {AuthRedirectTextPage} from '@components/AuthRedirectTextPage';
 import {Button} from '@components/atomic/Button';
 import {ControlledTextInput} from '@components/Controller/ControlledTextInput';
-import {useAuthContext} from '@context/AuthContext';
+import {ControlledPasswordInput} from '@components/Controller/ControlledPasswordInput';
 import {Text} from '@components/atomic/Text';
 
 import {Container, Form, FooterWrapper} from './styles';
-
-import {useNavigation} from '@react-navigation/native';
 
 interface LoginFormProps {
   email: string;
@@ -63,7 +64,7 @@ export function AccountScreen() {
           handleResetField={resetField}
         />
 
-        <ControlledTextInput
+        <ControlledPasswordInput
           name="password"
           control={control}
           rules={{
@@ -71,9 +72,6 @@ export function AccountScreen() {
           }}
           placeholder="Digite sua senha"
           label="Senha"
-          textContentType="password"
-          secureTextEntry
-          handleResetField={resetField}
         />
 
         <FooterWrapper>
