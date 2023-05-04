@@ -5,7 +5,7 @@
 
 <p align="center">
   <a href="#nike-store">
-    <img alt="preview" src="./docs/cover.png" >
+    <img alt="preview" src="https://github.com/jp-prud/DoctorApp/blob/main/docs/github/cover.png?raw=true" >
   </a>
 </p>
 
