@@ -5,7 +5,7 @@
 
 <p align="center">
   <a href="#nike-store">
-    <img alt="preview" src="./cover.png" >
+    <img alt="preview" src="./docs/cover.png" >
   </a>
 </p>
 
