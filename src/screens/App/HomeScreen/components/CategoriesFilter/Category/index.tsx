@@ -4,7 +4,7 @@ import {CategoryProps} from '@types/index';
 
 import {Container, IconWrapper} from './styles';
 
-export function Category({title, icon, isSelected}: CategoryProps) {
+export function Category({name, icon, isSelected}: CategoryProps) {
   return (
     <Container isSelected={isSelected}>
       <IconWrapper>
@@ -12,7 +12,7 @@ export function Category({title, icon, isSelected}: CategoryProps) {
       </IconWrapper>
 
       <Text size="MD" weight={700} color="#666">
-        {title}
+        {name}
       </Text>
     </Container>
   );
