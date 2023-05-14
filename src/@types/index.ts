@@ -6,7 +6,8 @@ export interface MedicProps {
 }
 
 export interface CategoryProps {
-  title: string;
+  _id: string;
+  name: string;
   icon: string;
   isSelected?: boolean;
 }

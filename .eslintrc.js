@@ -9,7 +9,12 @@ module.exports = {
     'prettier/react',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react', 'react-native'],
+  plugins: [
+    '@typescript-eslint',
+    '@tanstack/eslint-plugin-query',
+    'react',
+    'react-native',
+  ],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
@@ -20,5 +25,14 @@ module.exports = {
       },
     },
   ],
+  'sort-imports': [
+    'error',
+    {
+      ignoreCase: false,
+      ignoreDeclarationSort: false,
+      ignoreMemberSort: false,
+      memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+      allowSeparatedGroups: false,
+    },
+  ],
 };
-
