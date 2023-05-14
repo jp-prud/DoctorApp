@@ -12,11 +12,12 @@ import AppointmentsService, {
 } from 'src/services/AppointmentsService';
 
 import {AppointmentCard} from '@components/AppointmentCard';
-import {Container} from './styles';
 import Separator from '@components/atomic/Separator';
 import {Heading} from '@components/atomic/Heading';
 import {RenderIfElse} from '@components/atomic/RenderIfElse';
 import {EmptyState} from '@components/EmptyState';
+
+import {Container} from './styles';
 
 export function AppointmentScreen() {
   const [appointmentList, setAppointmentList] = useState<AppointmentDTO[]>([]);
