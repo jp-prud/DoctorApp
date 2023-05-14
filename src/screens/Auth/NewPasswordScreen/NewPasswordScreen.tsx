@@ -1,12 +1,11 @@
+import {useNavigation} from '@react-navigation/native';
 import ViewWrapper from '@components/atomic/ViewWrapper';
+import {useForm} from 'react-hook-form';
 
-import {ControlledTextInput} from '@components/Controller/ControlledTextInput';
 import {Heading} from '@components/atomic/Heading';
 import {FormWrapper} from './styles';
-import {useForm} from 'react-hook-form';
 import {Button} from '@components/atomic/Button';
-
-import {useNavigation} from '@react-navigation/native';
+import {ControlledPasswordInput} from '@components/Controller/ControlledPasswordInput';
 
 interface NewPasswordSchema {
   password: string;
@@ -27,20 +26,24 @@ export function NewPasswordScreen() {
       />
 
       <FormWrapper>
-        <ControlledTextInput
-          control={control}
-          label="Nova senha"
-          placeholder="Defina uma nova senha"
-          handleResetField={() => {}}
+        <ControlledPasswordInput
           name="password"
+          control={control}
+          rules={{
+            required: 'sua senha deve conter ao menos 6 dígitos',
+          }}
+          placeholder="Digite sua senha"
+          label="Senha"
         />
 
-        <ControlledTextInput
+        <ControlledPasswordInput
+          name="confirm-password"
           control={control}
+          rules={{
+            required: 'sua senha deve conter ao menos 6 dígitos',
+          }}
+          placeholder="Confirme sua senha"
           label="Confirmar senha"
-          placeholder="Confirme a senha"
-          handleResetField={() => {}}
-          name="confirm_password"
         />
       </FormWrapper>
 
