@@ -3,7 +3,12 @@ import AppointmentProps from '../model/AppointmentTypeModel';
 
 export class AppointmentRepository {
   public listAll(): Promise<AppointmentProps[]> {
-    return AppointmentModel.find({}, ['doctor', 'patient', 'status'])
+    return AppointmentModel.find({}, [
+      'doctor',
+      'patient',
+      'status',
+      'appointmentTime',
+    ])
       .sort({ createdAt: -1 })
       .populate({
         path: 'doctor',
