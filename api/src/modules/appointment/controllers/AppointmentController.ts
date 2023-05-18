@@ -7,11 +7,15 @@ import AppointmentProps from '../model/AppointmentTypeModel';
 
 export class AppointmentController {
   public async index(request: Request, response: Response) {
-    const listAllAppointmentService = new ListAllAppointmentService();
+    try {
+      const listAllAppointmentService = new ListAllAppointmentService();
 
-    const appointments = await listAllAppointmentService.execute();
+      const appointments = await listAllAppointmentService.execute();
 
-    return response.json(appointments);
+      return response.json(appointments);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   public async store(request: Request, response: Response) {

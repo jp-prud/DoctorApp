@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import { model, Schema } from 'mongoose';
 
 export const AppointmentModel = model(
   'Appointment',
@@ -30,10 +30,18 @@ export const AppointmentModel = model(
     feedback: {
       type: Schema.Types.ObjectId,
       ref: 'Feedback',
+      options: {
+        allowNull: true,
+      },
+      default: null,
     },
     prescription: {
       type: Schema.Types.ObjectId,
       ref: 'Prescription',
+      options: {
+        allowNull: true,
+      },
+      default: null,
     },
   }),
 );

@@ -3,9 +3,16 @@ import AppointmentProps from '../model/AppointmentTypeModel';
 
 export class AppointmentRepository {
   public listAll(): Promise<AppointmentProps[]> {
-    return AppointmentModel.find()
+    return AppointmentModel.find({}, ['doctor', 'patient', 'status'])
       .sort({ createdAt: -1 })
-      .populate(['doctor', 'patient', 'feedback', 'prescription']);
+      .populate({
+        path: 'doctor',
+        select: 'name',
+      })
+      .populate({
+        path: 'patient',
+        select: 'name',
+      });
   }
 
   public findById(appointmentId: string) {
