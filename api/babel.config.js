@@ -4,6 +4,7 @@ module.exports = {
     '@babel/preset-typescript',
   ],
   plugins: [
+    ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
     [
       'module-resolver',
       {
