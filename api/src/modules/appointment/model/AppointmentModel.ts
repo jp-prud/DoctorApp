@@ -17,11 +17,16 @@ export const AppointmentModel = model(
       type: String,
       enum: [
         'Aguardando',
+        'Marcado',
         'Em_Atendimento',
         'Aguardando_Pagamento',
         'Finalizado',
       ],
       default: 'Aguardando',
+    },
+    appointmentTime: {
+      type: Date,
+      required: true,
     },
     createdAt: {
       type: Date,

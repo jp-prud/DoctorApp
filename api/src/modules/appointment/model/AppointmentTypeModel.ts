@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 type Status =
   | 'Aguardando'
+  | 'Marcado'
   | 'Em_Atendimento'
   | 'Aguardando_Pagamento'
   | 'Finalizado';
