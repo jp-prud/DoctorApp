@@ -13,6 +13,8 @@ interface AppointmentProps extends mongoose.Document {
   status: Status;
   feedback?: string;
   prescription?: string;
+  appointmentTime: Date;
+  address: string;
 }
 
 export default AppointmentProps;

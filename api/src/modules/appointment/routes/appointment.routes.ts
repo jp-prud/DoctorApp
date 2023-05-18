@@ -16,6 +16,7 @@ appointmentRouter.post(
       patient: objectIdValidator,
       doctor: objectIdValidator,
       appointmentTime: Joi.string().required(),
+      address: Joi.string().required(),
       status: Joi.string().valid(
         'Aguardando',
         'Marcado',

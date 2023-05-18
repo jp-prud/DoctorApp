@@ -28,6 +28,10 @@ export const AppointmentModel = model(
       type: Date,
       required: true,
     },
+    address: {
+      type: String,
+      required: true,
+    },
     createdAt: {
       type: Date,
       default: Date.now,
