@@ -11,11 +11,11 @@ export function makeServer({ environment = 'development' } = {}) {
     environment,
 
     models: {
-      medic: Model,
+      doctor: Model,
     },
 
     factories: {
-      medic: Factory.extend({
+      doctor: Factory.extend({
         name() {
           return faker.name.fullName();
         },
@@ -33,12 +33,12 @@ export function makeServer({ environment = 'development' } = {}) {
     },
 
     seeds(server) {
-      server.createList('medic', 10);
+      server.createList('doctor', 10);
     },
 
     routes() {
-      this.get('/api/medics', (schema) => {
-        return schema.medics.all();
+      this.get('/api/doctors', (schema) => {
+        return schema.doctors.all();
       });
     },
   });

@@ -7,7 +7,7 @@ export class routes {
      * operation. .get(), .post(), .put() and delete().
      * Mirage JS guide on Resource: https://miragejs.com/docs/route-handlers/shorthands#resource-helper
      */
-    this.resource('medics');
+    this.resource('doctors');
     this.resource('products');
 
     /*

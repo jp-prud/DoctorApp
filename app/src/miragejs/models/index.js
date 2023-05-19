@@ -12,11 +12,11 @@ import { Model, hasMany, belongsTo } from 'miragejs';
  * Mirage JS guide on Relationships: https://miragejs.com/docs/main-concepts/relationships/
  */
 export default {
-  medic: Model.extend({
+  doctor: Model.extend({
     messages: hasMany(),
   }),
   messages: Model.extend({
-    medic: belongsTo(),
+    doctor: belongsTo(),
   }),
   product: Model,
 };

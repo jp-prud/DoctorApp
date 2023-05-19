@@ -2,7 +2,7 @@
  * Mirage JS guide on Factories: https://miragejs.com/docs/data-layer/factories
  */
 
-import medic from './medic';
+import doctor from './doctor';
 import message from './message';
 
 /*
@@ -11,6 +11,6 @@ import message from './message';
  * be done for all future factories
  */
 export default {
-  ...medic,
+  ...doctor,
   ...message,
 };

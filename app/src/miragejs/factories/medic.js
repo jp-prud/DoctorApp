@@ -9,7 +9,7 @@ import { Factory } from 'miragejs';
 import { faker } from '@faker-js/faker';
 
 export default {
-  medic: Factory.extend({
+  doctor: Factory.extend({
     name() {
       return faker.name().fullName();
     },
