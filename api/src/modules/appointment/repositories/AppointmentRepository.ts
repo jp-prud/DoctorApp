@@ -8,6 +8,7 @@ export class AppointmentRepository {
       'patient',
       'status',
       'appointmentTime',
+      'description',
       'address',
     ])
       .sort({ createdAt: -1 })

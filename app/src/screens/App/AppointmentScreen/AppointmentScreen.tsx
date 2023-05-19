@@ -26,9 +26,9 @@ export function AppointmentScreen() {
   useEffect(() => {
     (async () => {
       try {
-        const appointments = await AppointmentsService.listAppointments();
+        const {data} = await AppointmentsService.listAll();
 
-        setAppointmentList(appointments);
+        setAppointmentList(data);
       } catch (error) {
         Alert.alert('Erro');
 

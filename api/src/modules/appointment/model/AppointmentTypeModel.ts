@@ -11,10 +11,11 @@ interface AppointmentProps extends mongoose.Document {
   patient: string;
   doctor: string;
   status: Status;
+  address: string;
+  appointmentTime: Date;
+  description: string;
   feedback?: string;
   prescription?: string;
-  appointmentTime: Date;
-  address: string;
 }
 
 export default AppointmentProps;

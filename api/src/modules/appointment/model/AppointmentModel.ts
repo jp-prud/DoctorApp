@@ -24,6 +24,10 @@ export const AppointmentModel = model(
       ],
       default: 'Aguardando',
     },
+    description: {
+      type: String,
+      required: true,
+    },
     appointmentTime: {
       type: Date,
       required: true,
