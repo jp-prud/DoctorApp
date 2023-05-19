@@ -17,7 +17,7 @@ export class CreateDoctorService {
       doctor.crm,
     );
 
-    if (!doctorCrmIsAlreadyExists)
+    if (doctorCrmIsAlreadyExists)
       throw new AppError('Doctor with this CRM is already in use');
 
     const newDoctor = await doctorRepository.create(doctor);
