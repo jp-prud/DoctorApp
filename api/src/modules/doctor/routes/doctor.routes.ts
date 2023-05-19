@@ -16,6 +16,7 @@ doctorRouter.post(
       name: Joi.string().required(),
       email: Joi.string().email().required(),
       crm: Joi.string().required(),
+      description: Joi.string().required(),
       phone: Joi.string().required(),
       speciality: objectIdValidator,
     },
