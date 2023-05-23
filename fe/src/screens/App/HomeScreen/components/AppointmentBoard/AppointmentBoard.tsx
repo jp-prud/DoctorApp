@@ -1,13 +1,19 @@
 import { Text } from "../../../../../components/atomic/Text";
+import { Appointment } from "../../../AppointmentScreen/AppointmentScreen";
 import { AppointmentCard } from "../AppointmentCard/AppointmentCard";
 import { Container } from "./styles";
 
 interface AppointmentBoardProps {
   title: string;
   icon: any;
+  appointments: Appointment[];
 }
 
-export function AppointmentBoard({ title, icon }: AppointmentBoardProps) {
+export function AppointmentBoard({
+  title,
+  icon,
+  appointments,
+}: AppointmentBoardProps) {
   return (
     <Container>
       <header>
@@ -16,12 +22,22 @@ export function AppointmentBoard({ title, icon }: AppointmentBoardProps) {
         <Text size="LG">{title}</Text>
 
         <Text size="LG" weight="400" className="quantity-board">
-          1
+          {appointments.length}
         </Text>
       </header>
 
       <ul>
-        <AppointmentCard />
+        {appointments.length > 0 && (
+          <>
+            {appointments?.map(({ _id, patient, appointmentTime }) => (
+              <AppointmentCard
+                key={_id}
+                patient={patient}
+                appointmentTime={appointmentTime}
+              />
+            ))}
+          </>
+        )}
       </ul>
     </Container>
   );
