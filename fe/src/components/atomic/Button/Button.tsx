@@ -1,3 +1,4 @@
+import Spinner from "../Spinner/Spinner";
 import { StyledButton, Title } from "./styles";
 import { ButtonProps } from "./types";
 
@@ -25,7 +26,7 @@ export default function Button({
           {title}
         </Title>
       )}
-      {/* {isLoading && <Spinner size={16} />} */}
+      {isLoading && <Spinner size={16} />}
     </StyledButton>
   );
 }

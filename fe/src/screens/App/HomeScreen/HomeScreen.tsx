@@ -16,8 +16,14 @@ import { Text } from "../../../components/atomic/Text";
 import { useQuery } from "react-query";
 import { Appointment, Status } from "../AppointmentScreen/AppointmentScreen";
 
+import { useAppointmentContext } from "../../../Context/AppointmentContext/AppointmentContext";
+import { Modal } from "../../../components/Modal/Modal";
+
 export function HomeScreen() {
   const { data, isLoading, error } = useQuery("users", loadAppointments);
+
+  const { selectedAppointment, handleSelectedAppointment } =
+    useAppointmentContext();
 
   async function loadAppointments() {
     const response = await fetch(
@@ -73,6 +79,16 @@ export function HomeScreen() {
             appointments={filterCurrentStatusAppointmentBoard("Finalizado")}
           />
         </BoardWrapper>
+      )}
+
+      {selectedAppointment && (
+        <Modal
+          title={"Atendimento"}
+          visible={Boolean(selectedAppointment)}
+          onConfirm={() => handleSelectedAppointment(null)}
+        >
+          <h1>{selectedAppointment.patient.name}</h1>
+        </Modal>
       )}
     </>
   );

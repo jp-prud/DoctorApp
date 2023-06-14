@@ -41,23 +41,27 @@ export function Modal({
           <Header danger={danger}>
             <Text>{title}</Text>
 
-            <button className="close-button" onClick={() => onCancel()}>
-              <img src={CloseIcon} alt="Fechar" title="Fechar" />
-            </button>
+            {onCancel && (
+              <button className="close-button" onClick={() => onCancel()}>
+                <img src={CloseIcon} alt="Fechar" title="Fechar" />
+              </button>
+            )}
           </Header>
 
           <div className="modal-body">{children}</div>
 
           <Footer danger={danger}>
-            <Button
-              type="button"
-              className="cancel-button"
-              onClick={() => onCancel()}
-              disabled={isLoading}
-              variant="link"
-              title={cancelLabel}
-              size="4X"
-            />
+            {cancelLabel && onCancel && (
+              <Button
+                type="button"
+                className="cancel-button"
+                onClick={() => onCancel()}
+                disabled={isLoading}
+                variant="link"
+                title={cancelLabel}
+                size="4X"
+              />
+            )}
 
             <Button
               type="button"

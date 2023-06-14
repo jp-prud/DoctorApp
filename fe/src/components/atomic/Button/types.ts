@@ -7,7 +7,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   onClick(): void;
   title: string;
   size: Size | number;
-  variant: ButtonVariant | "solid";
+  variant?: ButtonVariant;
   block?: boolean;
 };
 

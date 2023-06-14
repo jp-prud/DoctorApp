@@ -34,7 +34,11 @@ const round = keyframes`
   }
 `;
 
-export const StyledSpinner = styled.div`
+interface StyledSpinnerProps {
+  size?: number;
+}
+
+export const StyledSpinner = styled.div<StyledSpinnerProps>`
   color: ${({ theme }) => theme.COLORS.BLUE};
   font-size: ${({ size }) => `${size}px`};
   width: 1em;

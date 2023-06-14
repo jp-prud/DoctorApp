@@ -26,19 +26,13 @@ export function AppointmentBoard({
         </Text>
       </header>
 
-      <ul>
-        {appointments.length > 0 && (
-          <>
-            {appointments?.map(({ _id, patient, appointmentTime }) => (
-              <AppointmentCard
-                key={_id}
-                patient={patient}
-                appointmentTime={appointmentTime}
-              />
-            ))}
-          </>
-        )}
-      </ul>
+      {appointments.length > 0 && (
+        <ul>
+          {appointments?.map((appointment) => (
+            <AppointmentCard key={appointment._id} appointment={appointment} />
+          ))}
+        </ul>
+      )}
     </Container>
   );
 }
