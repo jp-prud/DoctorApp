@@ -86,8 +86,11 @@ export function HomeScreen() {
           title={"Atendimento"}
           visible={Boolean(selectedAppointment)}
           onConfirm={() => handleSelectedAppointment(null)}
+          confirmLabel={
+            selectedAppointment.status === "Finalizado" ? "Arquivar" : "Avançar"
+          }
         >
-          <h1>{selectedAppointment.patient.name}</h1>
+          <Text>{selectedAppointment.patient.name}</Text>
         </Modal>
       )}
     </>

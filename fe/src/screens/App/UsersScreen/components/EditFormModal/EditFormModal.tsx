@@ -4,6 +4,11 @@ import { Modal } from "../../../../../components/Modal/Modal";
 import { User } from "../../UsersScreen";
 import { FormWrapper } from "../../styles";
 
+import {
+  editUserModalSchemaTypes,
+  editUserModalSchema,
+} from "./editFormModalSchema";
+
 type PartialUserFields = Pick<
   User,
   "name" | "email" | "phone" | "address" | "cpf"
