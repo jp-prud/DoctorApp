@@ -30,6 +30,14 @@ export class AppointmentRepository {
     return AppointmentModel.create(appointment);
   }
 
+  public updateStatus(appointmentId: string, status: string) {
+    return AppointmentModel.findByIdAndUpdate(appointmentId, {
+      $set: {
+        status: status,
+      },
+    });
+  }
+
   public delete(specialityId: string): Promise<unknown> {
     return AppointmentModel.findByIdAndDelete(specialityId);
   }

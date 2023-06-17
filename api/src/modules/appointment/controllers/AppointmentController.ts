@@ -4,6 +4,7 @@ import { CreateAppointmentService } from '../services/CreateAppointmentService';
 import { DeleteAppointmentService } from '../services/DeleteAppointmentService';
 import { ListAllAppointmentService } from '../services/ListAllAppointmentService';
 import AppointmentProps from '../model/AppointmentTypeModel';
+import { UpdateStatusAppointmentService } from '../services/UpdateStatusAppointmentService';
 
 export class AppointmentController {
   public async index(request: Request, response: Response) {
@@ -28,6 +29,18 @@ export class AppointmentController {
     );
 
     return response.json(responseAppointmentService);
+  }
+
+  public async updateStatus(request: Request, response: Response) {
+    const { id } = request.params;
+
+    const { status } = request.body;
+
+    const updateStatusAppointmentService = new UpdateStatusAppointmentService();
+
+    await updateStatusAppointmentService.execute(id, status);
+
+    return response.sendStatus(204);
   }
 
   public async delete(request: Request, response: Response) {

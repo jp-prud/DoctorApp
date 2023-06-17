@@ -32,6 +32,22 @@ appointmentRouter.post(
   appointmentController.store,
 );
 
+appointmentRouter.patch(
+  '/:id',
+  celebrate({
+    [Segments.BODY]: {
+      status: Joi.string().valid(
+        'Aguardando',
+        'Marcado',
+        'Em_Atendimento',
+        'Aguardando_Pagamento',
+        'Finalizado',
+      ),
+    },
+  }),
+  appointmentController.updateStatus,
+);
+
 appointmentRouter.delete(
   '/:id',
   celebrate({
