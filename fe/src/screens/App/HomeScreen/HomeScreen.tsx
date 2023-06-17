@@ -20,10 +20,14 @@ import { Appointment, Status } from "../AppointmentScreen/AppointmentScreen";
 import toast from "../../../utils/toast";
 import { AppointmentModal } from "./components/Appointment/Modal/Modal";
 
+import { useAppointmentContext } from "../../../Context/AppointmentContext/AppointmentContext";
+import { Modal } from "../../../components/Modal/Modal";
+
 export function HomeScreen() {
   const { data, isLoading, error } = useQuery("users", loadAppointments);
 
-  const [selectedAppointment, setSelectedAppointment] = useState<Appointment>();
+  const { selectedAppointment, handleSelectedAppointment } =
+    useAppointmentContext();
 
   async function loadAppointments() {
     const response = await fetch(
@@ -92,7 +96,16 @@ export function HomeScreen() {
       )}
 
       {selectedAppointment && (
-        <AppointmentModal appointment={selectedAppointment} />
+        <Modal
+          title={"Atendimento"}
+          visible={Boolean(selectedAppointment)}
+          onConfirm={() => handleSelectedAppointment(null)}
+          confirmLabel={
+            selectedAppointment.status === "Finalizado" ? "Arquivar" : "Avançar"
+          }
+        >
+          <Text>{selectedAppointment.patient.name}</Text>
+        </Modal>
       )}
     </>
   );

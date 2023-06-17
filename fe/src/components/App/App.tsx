@@ -9,6 +9,7 @@ import { Layout } from "../Layout/Layout";
 import { GlobalStyles } from "../../assets/styles/GlobalStyles";
 
 import theme from "../../assets/styles/theme";
+import { AppointmentContextProvider } from "../../Context/AppointmentContext/AppointmentContext";
 
 const queryClient = new QueryClient();
 
@@ -16,13 +17,15 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <ModalContextProvider>
-          <ThemeProvider theme={theme}>
-            <GlobalStyles />
+        <AppointmentContextProvider>
+          <ModalContextProvider>
+            <ThemeProvider theme={theme}>
+              <GlobalStyles />
 
-            <Layout />
-          </ThemeProvider>
-        </ModalContextProvider>
+              <Layout />
+            </ThemeProvider>
+          </ModalContextProvider>
+        </AppointmentContextProvider>
       </BrowserRouter>
     </QueryClientProvider>
   );
