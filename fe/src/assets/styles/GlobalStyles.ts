@@ -77,13 +77,14 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: #fafafa;
-    color: #333;
+    background: ${({ theme }) => theme.COLORS.GRAY_600};
+    color: ${({ theme }) => theme.COLORS.GRAY_500};
   }
 
   button {
     cursor: pointer;
     font-size: 1rem;
-    color: #333;
+        color: ${({ theme }) => theme.COLORS.GRAY_500};
+
   }
 `;

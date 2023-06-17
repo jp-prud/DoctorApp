@@ -4,9 +4,11 @@ import {useAuthContext} from '@context/AuthContext';
 import {FlatList, ListRenderItemInfo, View} from 'react-native';
 import {CardScreen} from './components/CardScreen';
 
+import {RoutesPathOptions} from '../../../@types/navigation';
+
 export interface ScreensDTO {
   title: string;
-  link: string;
+  link: RoutesPathOptions;
 }
 
 export function ProfileScreen() {
@@ -15,23 +17,7 @@ export function ProfileScreen() {
   const screensOptions: ScreensDTO[] = [
     {
       title: 'Notificações',
-      link: '',
-    },
-    {
-      title: 'Segurança',
-      link: '',
-    },
-    {
-      title: 'Aparencia',
-      link: '',
-    },
-    {
-      title: 'Ajuda',
-      link: '',
-    },
-    {
-      title: 'Convidar Amigos',
-      link: '',
+      link: 'NotificationsView',
     },
   ];
 

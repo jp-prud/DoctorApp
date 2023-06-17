@@ -4,23 +4,23 @@ import {FlatList, ListRenderItemInfo, View} from 'react-native';
 
 import {useQuery} from '@tanstack/react-query';
 
-import {MedicCard} from '@components/MedicCard';
+import {DoctorCard} from '@components/DoctorCard/DoctorCard';
 import {CategoriesFilter} from './components/CategoriesFilter/index';
 import Separator from '@components/atomic/Separator';
 import {Text} from '@components/atomic/Text';
-import {AppointmentModal} from '@components/AppointmentModal';
+import {AppointmentModal} from '@components/AppointmentModal/AppointmentModal';
 
 import {useModalContext} from '@context/ModalContext';
 import {useNavigation} from '@react-navigation/native';
 
-import MedicsService from '@services/MedicsService';
+import DoctorsService from '@services/DoctorsService';
 
-import {MedicProps} from 'src/@types';
+import {DoctorProps} from 'src/@types';
 import {
   Container,
   Header,
   NotificationButton,
-  MedicListContainer,
+  DoctorListContainer,
 } from './styles';
 
 import BellIcon from '@assets/icons/bell.svg';
@@ -29,23 +29,23 @@ export function HomeScreen() {
   const navigation = useNavigation();
   const {handleClickOpenModal} = useModalContext();
 
-  const {data, isLoading, error} = useQuery<MedicProps[]>(
-    ['medics'],
-    loadMedics,
+  const {data, isLoading, error} = useQuery<DoctorProps[]>(
+    ['doctors'],
+    loadDoctors,
   );
 
-  const [selectedMedic, setSelectedMedic] =
-    useState<Pick<MedicProps, 'name' | 'specialization'>>();
+  const [selectedDoctor, setSelectedDoctor] =
+    useState<Pick<DoctorProps, 'name' | 'speciality'>>();
 
-  async function loadMedics() {
-    const {data} = await MedicsService.listAll();
+  async function loadDoctors() {
+    const {data} = await DoctorsService.listAll();
 
     return data;
   }
 
-  function renderItem({item}: ListRenderItemInfo<MedicProps>) {
+  function renderItem({item}: ListRenderItemInfo<DoctorProps>) {
     return (
-      <MedicCard
+      <DoctorCard
         {...item}
         handleMakeAnAppointment={handleClickOpenAppoinmtmentModal}
       />
@@ -53,8 +53,8 @@ export function HomeScreen() {
   }
 
   const handleClickOpenAppoinmtmentModal = useCallback(
-    (medicData: Pick<MedicProps, 'name' | 'specialization'>) => {
-      setSelectedMedic(medicData);
+    (doctorData: Pick<DoctorProps, 'name' | 'speciality'>) => {
+      setSelectedDoctor(doctorData);
 
       handleClickOpenModal();
     },
@@ -83,7 +83,7 @@ export function HomeScreen() {
 
       <CategoriesFilter />
 
-      <MedicListContainer>
+      <DoctorListContainer>
         <>
           {!isLoading && !error && (
             <FlatList
@@ -99,9 +99,9 @@ export function HomeScreen() {
             <Text>Ocorreu um erro ao obter os médicos cadastrados</Text>
           )}
         </>
-      </MedicListContainer>
+      </DoctorListContainer>
 
-      <AppointmentModal selectedMedic={selectedMedic} />
+      <AppointmentModal selectedDoctor={selectedDoctor} />
     </Container>
   );
 }

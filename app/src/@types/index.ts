@@ -1,8 +1,10 @@
-export interface MedicProps {
+export interface DoctorProps {
   name: string;
+  email: string;
+  crm: string;
   description: string;
-  specialization: string;
-  image_url: string;
+  phone?: string;
+  speciality: string;
 }
 
 export interface CategoryProps {

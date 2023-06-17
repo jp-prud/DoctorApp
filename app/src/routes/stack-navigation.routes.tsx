@@ -55,6 +55,7 @@ export function ProfileStackScreen() {
   return (
     <Navigator screenOptions={NAVIGATOR_STACK_SCREEN_OPTIONS}>
       <Screen name="ProfileStackScreen" component={ProfileScreen} />
+      <Screen name="NotificationsView" component={NotificationsScreen} />
     </Navigator>
   );
 }

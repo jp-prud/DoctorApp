@@ -1,6 +1,1 @@
-<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="7.99878" cy="9.00854" r="3.49145" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="17.0025" cy="9.99884" r="2.50104" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1.99609 20.5033V19.4859C1.99609 17.285 3.77984 15.5012 5.98075 15.5012H10.0164C12.2174 15.5012 14.0011 17.285 14.0011 19.4859V20.5033" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M17.0024 15.5012H18.1049C20.3058 15.5012 22.0896 17.285 22.0896 19.4859V20.5033" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="none"><circle cx="7.999" cy="9.009" r="3.491" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><circle cx="17.003" cy="9.999" r="2.501" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1.996 20.503v-1.017c0-2.201 1.784-3.985 3.985-3.985h4.035a3.984 3.984 0 0 1 3.985 3.985v1.017M17.002 15.501h1.103c2.2 0 3.985 1.784 3.985 3.985v1.017"/></svg>

@@ -1,6 +1,6 @@
-import {MedicProps} from 'src/@types';
+import {DoctorProps} from 'src/@types';
 
-const medics: MedicProps[] = [
+const doctors: DoctorProps[] = [
   {
     name: 'Dr. John Smith',
     description: 'Dentista cirurgiã especializada em lentes dentais.',
@@ -13,7 +13,7 @@ const medics: MedicProps[] = [
     description: 'Dentista cirurgiã especializada em lentes dentais.',
     specialization: 'Oftalmologista',
     image_url:
-      'https://thumbs.dreamstime.com/b/african-american-smiling-female-doctor-sitting-table-medical-office-working-computer-telemedicine-woman-white-225452535.jpg',
+      'https://thumbs.dreamstime.com/b/african-american-smiling-female-doctor-sitting-table-doctoral-office-working-computer-teledoctorine-woman-white-225452535.jpg',
   },
   {
     name: 'Dr. William Chen',
@@ -52,4 +52,4 @@ const medics: MedicProps[] = [
   },
 ];
 
-export default medics;
+export default doctors;

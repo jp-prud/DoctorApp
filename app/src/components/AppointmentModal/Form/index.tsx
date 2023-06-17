@@ -9,14 +9,14 @@ import {FormGroup} from '@components/atomic/FormGroup';
 import {Button} from '@components/atomic/Button';
 
 import AppointmentsService from '../../../services/AppointmentsService';
-import {MedicProps} from '@types/index';
-import DatePicker from 'react-native-date-picker';
+import {DoctorProps} from '@types/index';
+// import DatePicker from 'react-native-date-picker';
 import {DATE_STYLES_FORMAT} from '../../../constants';
 
 interface AppointmentFormProps {
   handleNextStep(): void;
   context: {
-    selectedMedic: Pick<MedicProps, 'name' | 'specialization'>;
+    selectedDoctor: Pick<DoctorProps, 'name' | 'specialization'>;
   };
 }
 
@@ -27,7 +27,7 @@ interface AppointmentoFormInputs {
 
 export function AppointmentForm({
   handleNextStep,
-  context: {selectedMedic},
+  context: {selectedDoctor},
 }: AppointmentFormProps) {
   const [formIsLoading, setFormIsLoading] = useState(false);
   const [openDateModal, setOpenDateModal] = useState(false);
@@ -45,9 +45,9 @@ export function AppointmentForm({
 
     try {
       await AppointmentsService.createAppointment({
-        medicData: {
-          name: selectedMedic.name,
-          specialiation: selectedMedic.specialization,
+        doctorData: {
+          name: selectedDoctor.name,
+          specialiation: selectedDoctor.specialization,
         },
         address: formData.address,
         date,
@@ -105,7 +105,7 @@ export function AppointmentForm({
               value={date.toLocaleString('pt-BR', DATE_STYLES_FORMAT)}
             />
 
-            <DatePicker
+            {/* <DatePicker
               modal
               mode="time"
               title="Horário de atendimento"
@@ -120,7 +120,7 @@ export function AppointmentForm({
               onCancel={() => {
                 setOpenDateModal(false);
               }}
-            />
+            /> */}
           </FormGroup>
         )}
       />

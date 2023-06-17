@@ -7,7 +7,7 @@ import {Container, Details} from './styles';
 
 export function Card({title, description}: Notification) {
   return (
-    <Container>
+    <Container testId="notification-card">
       <Image
         source={{
           uri: 'http://via.placeholder.com/92x92.png',
@@ -21,7 +21,7 @@ export function Card({title, description}: Notification) {
           {title}
         </Text>
 
-        <Text size="SM" weight="400" >
+        <Text size="SM" weight="400">
           {description}
         </Text>
       </Details>

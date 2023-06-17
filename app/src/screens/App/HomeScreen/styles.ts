@@ -25,7 +25,7 @@ export const NotificationButton = styled.TouchableOpacity`
   elevation: 2;
 `;
 
-export const MedicListContainer = styled.View`
+export const DoctorListContainer = styled.View`
   flex: 1;
   padding: 10px;
 `;

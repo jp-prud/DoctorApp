@@ -20,4 +20,5 @@ export type RoutesPathOptions =
   | 'orders'
   | 'profile'
   | 'History'
-  | 'appointment';
+  | 'appointment'
+  | 'NotificationsView';

@@ -1,6 +1,10 @@
+import { useState } from "react";
+
+import { useQuery } from "react-query";
+
 import { Heading } from "../../../components/atomic/Heading/Heading";
 
-import { AppointmentBoard } from "./components/AppointmentBoard/AppointmentBoard";
+import { AppointmentBoard } from "./components/Appointment/Board/Board";
 
 import ClockIcon from "../../../assets/images/icons/IOS/clock.svg";
 import CheckIcon from "../../../assets/images/icons/IOS/check.svg";
@@ -11,13 +15,15 @@ import HomeIcon from "../../../assets/images/icons/home.svg";
 
 import { BoardWrapper } from "./styles";
 import Spinner from "../../../components/atomic/Spinner/Spinner";
-import { Text } from "../../../components/atomic/Text";
 
-import { useQuery } from "react-query";
 import { Appointment, Status } from "../AppointmentScreen/AppointmentScreen";
+import toast from "../../../utils/toast";
+import { AppointmentModal } from "./components/Appointment/Modal/Modal";
 
 export function HomeScreen() {
   const { data, isLoading, error } = useQuery("users", loadAppointments);
+
+  const [selectedAppointment, setSelectedAppointment] = useState<Appointment>();
 
   async function loadAppointments() {
     const response = await fetch(
@@ -41,7 +47,13 @@ export function HomeScreen() {
         icon={HomeIcon}
       />
 
-      {error && <Text>Não foi possível obter os atendimentos.</Text>}
+      {error &&
+        toast({
+          message: {
+            text: "Erro ao obter os clientes",
+            type: "danger",
+          },
+        })}
 
       {isLoading && <Spinner />}
 
@@ -51,12 +63,14 @@ export function HomeScreen() {
             title="Aguardando"
             icon={ClockIcon}
             appointments={filterCurrentStatusAppointmentBoard("Aguardando")}
+            onSelectAppointmentModal={setSelectedAppointment}
           />
 
           <AppointmentBoard
             title="Em Atendimento"
             icon={MedicIcon}
             appointments={filterCurrentStatusAppointmentBoard("Em_Atendimento")}
+            onSelectAppointmentModal={setSelectedAppointment}
           />
 
           <AppointmentBoard
@@ -65,14 +79,20 @@ export function HomeScreen() {
             appointments={filterCurrentStatusAppointmentBoard(
               "Aguardando_Pagamento"
             )}
+            onSelectAppointmentModal={setSelectedAppointment}
           />
 
           <AppointmentBoard
             title="Finalizado"
             icon={CheckIcon}
             appointments={filterCurrentStatusAppointmentBoard("Finalizado")}
+            onSelectAppointmentModal={setSelectedAppointment}
           />
         </BoardWrapper>
+      )}
+
+      {selectedAppointment && (
+        <AppointmentModal appointment={selectedAppointment} />
       )}
     </>
   );

@@ -24,7 +24,7 @@ export function Routes() {
         <Route element={<CustomRoute />}>
           {/* PRIVATE ROUTES */}
 
-          <Route path="/home" index element={<HomeScreen />} />
+          <Route path="/home" element={<HomeScreen />} />
           <Route path="/history" element={<HistoryScreen />} />
           <Route path="/appointments" element={<AppointmentScreen />} />
           <Route path="/users" element={<UsersScreen />} />

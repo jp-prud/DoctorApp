@@ -4,15 +4,15 @@ import { useQuery } from "react-query";
 
 import { Heading } from "../../../components/atomic/Heading/Heading";
 import { Table, TableColumn } from "../../../components/Table/Table";
-import { Text } from "../../../components/atomic/Text";
-import { useModalContext } from "../../../Context/ModalContext/ModalContext";
+import { useModalContext } from "../../../context/ModalContext/ModalContext";
 import { DeleteFormModal } from "./components/DeleteFormModal/DeleteFormModal";
 import { EditFormModal } from "./components/EditFormModal/EditFormModal";
 import { RenderIf } from "../../../components/RenderIf/RenderIf";
 import { CreateUserModal } from "./components/CreateUserModal/CreateUserModal";
 import Spinner from "../../../components/atomic/Spinner/Spinner";
 
-import UserIcon from '../../../assets/images/icons/users.svg'
+import UserIcon from "../../../assets/images/icons/users.svg";
+import toast from "../../../utils/toast";
 
 export interface User {
   _id: string;
@@ -57,7 +57,7 @@ export function UsersScreen() {
 
       handleOpenModal();
     },
-    [setSelectedUser, setSelectedOption, handleOpenModal]
+    [handleOpenModal]
   );
 
   const handleClickEditUser = useCallback(
@@ -67,7 +67,7 @@ export function UsersScreen() {
 
       handleOpenModal();
     },
-    [setSelectedUser, setSelectedOption, handleOpenModal]
+    [handleOpenModal]
   );
 
   const handleCreateUser = useCallback(() => {
@@ -113,7 +113,13 @@ export function UsersScreen() {
         icon={UserIcon}
       />
 
-      {error && <Text>Erro ao obter os usuários</Text>}
+      {error &&
+        toast({
+          message: {
+            text: "Erro ao obter os usuários",
+            type: "danger",
+          },
+        })}
 
       {isLoading && <Spinner size={64} />}
 

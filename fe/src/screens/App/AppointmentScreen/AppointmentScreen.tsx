@@ -5,7 +5,9 @@ import { Table, TableColumn } from "../../../components/Table/Table";
 import { useQuery } from "react-query";
 import { RenderIf } from "../../../components/RenderIf/RenderIf";
 import Spinner from "../../../components/atomic/Spinner/Spinner";
-import { Text } from "../../../components/atomic/Text";
+import toast from "../../../utils/toast";
+import { EditAppointmentModal } from "./components/EditAppointmentModal/EditAppointmentModal";
+import { useModalContext } from "../../../context/ModalContext/ModalContext";
 
 export type Status =
   | "Aguardando"
@@ -30,6 +32,7 @@ export interface Appointment {
 
 export function AppointmentScreen() {
   const { data, isLoading, error } = useQuery("users", loadAppointments);
+  const { handleOpenModal } = useModalContext();
 
   const columns: TableColumn<Appointment>[] = [
     { title: "Paciente", render: (data) => data?.patient?.name },
@@ -54,7 +57,13 @@ export function AppointmentScreen() {
         icon={AppointmentIcon}
       />
 
-      {error && <Text>Erro ao obter os atendimentos</Text>}
+      {error &&
+        toast({
+          message: {
+            text: "Erro ao obter os atendimentos",
+            type: "danger",
+          },
+        })}
 
       {isLoading && <Spinner size={32} />}
 
@@ -67,17 +76,17 @@ export function AppointmentScreen() {
             columns={columns}
             headerButton={{
               label: "Novo atendimento",
-              onClick: () => console.log("teste"),
+              onClick: () => toast({ message: { text: "Clicou" } }),
             }}
-            handleClickEdit={(entity: Appointment) => {
-              throw new Error("Function not implemented.");
-            }}
+            handleClickEdit={(entity: Appointment) => handleOpenModal()}
             handleClickDelete={(entity: Appointment) => {
               throw new Error("Function not implemented.");
             }}
           />
         }
       />
+
+      <EditAppointmentModal />
     </>
   );
 }

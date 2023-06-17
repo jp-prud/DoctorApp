@@ -2,7 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import { ThemeProvider } from "styled-components";
-import { ModalContextProvider } from "../../Context/ModalContext/ModalContext";
+import { ModalContextProvider } from "../../context/ModalContext/ModalContext";
 
 import { Layout } from "../Layout/Layout";
 

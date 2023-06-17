@@ -2,7 +2,6 @@ import {useState} from 'react';
 
 import {Modal, Platform, TouchableOpacity} from 'react-native';
 
-import {useNavigation} from '@react-navigation/native';
 import {useModalContext} from '@context/ModalContext/index';
 
 import {Text} from '@components/atomic/Text';
@@ -23,19 +22,18 @@ import {
   ReturnStep,
 } from './styles';
 
-import {MedicProps} from '../../@types/index';
+import {DoctorProps} from '../../@types/index';
 
 import LikeIcon from '@assets/icons/like.svg';
+import React from 'react';
 
 type Step = 'form' | 'success';
 
 interface AppointmentModalProps {
-  selectedMedic: Pick<MedicProps, 'name' | 'specialization'>;
+  selectedDoctor: Pick<DoctorProps, 'name' | 'specialization'>;
 }
 
-export function AppointmentModal({selectedMedic}: AppointmentModalProps) {
-  const navigation = useNavigation();
-
+export function AppointmentModal({selectedDoctor}: AppointmentModalProps) {
   const [currentStep, setCurrentStep] = useState<Step>('form');
 
   const {isOpenModal, handleClickCloseModal} = useModalContext();
@@ -61,7 +59,7 @@ export function AppointmentModal({selectedMedic}: AppointmentModalProps) {
           </HeaderContent>
 
           <DescriptionDoctor align="center" size="SM" color="GRAY_400">
-            Atendimento com {selectedMedic?.name} em 18 de Abril de 2023 as
+            Atendimento com {selectedDoctor?.name} em 18 de Abril de 2023 as
             16:00.
           </DescriptionDoctor>
         </Content>
@@ -112,7 +110,7 @@ export function AppointmentModal({selectedMedic}: AppointmentModalProps) {
               <AppointmentForm
                 handleNextStep={handleToggleCurrentStep}
                 context={{
-                  selectedMedic,
+                  selectedDoctor,
                 }}
               />
             }

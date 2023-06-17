@@ -8,6 +8,7 @@ import {ModalContextProvider} from '@context/ModalContext/index';
 // import {ENV} from '@env';
 
 import theme from '@theme/index';
+import React from 'react';
 
 // import {makeServer} from 'src/miragejs/server';
 

@@ -8,7 +8,7 @@ export const Container = styled.div`
   max-width: 108px;
   height: 100vh;
   padding-top: 40px;
-  background-color: #fff;
+  background-color: #000;
   position: sticky;
 
   .logo-wrapper {

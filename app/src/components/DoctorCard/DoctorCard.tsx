@@ -9,21 +9,21 @@ import {
   AddButton,
 } from './styles';
 
-import {MedicProps} from 'src/@types';
+import {DoctorProps} from 'src/@types';
 
-export type MedicCardProps = MedicProps & {
+export type DoctorCardProps = DoctorProps & {
   handleMakeAnAppointment: (
-    medicData: Pick<MedicProps, 'name' | 'specialization'>,
+    doctorData: Pick<DoctorProps, 'name' | 'specialization'>,
   ) => void;
 };
 
-export function MedicCard({
+export function DoctorCard({
   name,
   description,
   specialization,
   image_url = 'https://reactnative.dev/img/tiny_logo.png',
   handleMakeAnAppointment,
-}: MedicCardProps) {
+}: DoctorCardProps) {
   return (
     <Container>
       <Image

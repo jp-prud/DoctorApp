@@ -1,5 +1,9 @@
 import { StyledSpinner } from "./styles";
 
-export default function Spinner({ size = 32 }: { size: number }) {
-  return <StyledSpinner size={size} />;
+export interface StyledSpinnerProps {
+  size?: string;
+}
+
+export default function Spinner(size: StyledSpinnerProps) {
+  return <StyledSpinner size={size || "32"} />;
 }

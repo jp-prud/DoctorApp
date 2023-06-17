@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1685656792566" clover="3.2.0">
+  <project timestamp="1685656792566" name="All files">
+    <metrics statements="17" coveredstatements="17" conditionals="11" coveredconditionals="10" methods="10" coveredmethods="10" elements="38" coveredelements="37" complexity="0" loc="17" ncloc="17" packages="6" files="8" classes="8"/>
+    <package name="components.AppointmentCard">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="AppointmentCard.tsx" path="C:\Estudos\projetos\doctorApp\app\src\components\AppointmentCard\AppointmentCard.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+      </file>
+      <file name="styles.ts" path="C:\Estudos\projetos\doctorApp\app\src\components\AppointmentCard\styles.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.atomic">
+      <metrics statements="7" coveredstatements="7" conditionals="11" coveredconditionals="10" methods="6" coveredmethods="6"/>
+      <file name="Text.ts" path="C:\Estudos\projetos\doctorApp\app\src\components\atomic\Text.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="11" coveredconditionals="10" methods="6" coveredmethods="6"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="15" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="12" type="cond" truecount="2" falsecount="1"/>
+        <line num="21" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="12" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="constants">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="C:\Estudos\projetos\doctorApp\app\src\constants\index.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="screens.App.NotificationsScreen.components.Card">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="Card.tsx" path="C:\Estudos\projetos\doctorApp\app\src\screens\App\NotificationsScreen\components\Card\Card.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+      </file>
+      <file name="styles.ts" path="C:\Estudos\projetos\doctorApp\app\src\screens\App\NotificationsScreen\components\Card\styles.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="theme">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="C:\Estudos\projetos\doctorApp\app\src\theme\index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="formatDate.ts" path="C:\Estudos\projetos\doctorApp\app\src\utils\formatDate.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

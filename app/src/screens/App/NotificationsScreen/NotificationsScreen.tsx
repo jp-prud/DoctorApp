@@ -4,7 +4,7 @@ import {Heading} from '@components/atomic/Heading';
 import {Container} from './styles';
 import {notificationsList} from 'src/mocks/Notifications';
 
-import {Card} from './components/Card';
+import {Card} from './components/Card/Card';
 import {Text} from '@components/atomic/Text';
 
 export type Notification = {
