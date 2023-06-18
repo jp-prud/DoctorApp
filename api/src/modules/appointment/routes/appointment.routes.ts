@@ -48,6 +48,8 @@ appointmentRouter.patch(
   appointmentController.updateStatus,
 );
 
+appointmentRouter.post('/finishAll', appointmentController.finishAll);
+
 appointmentRouter.delete(
   '/:id',
   celebrate({

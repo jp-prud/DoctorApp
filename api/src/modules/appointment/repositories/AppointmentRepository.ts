@@ -38,6 +38,13 @@ export class AppointmentRepository {
     });
   }
 
+  public finishAll() {
+    return AppointmentModel.updateMany(
+      { status: { $ne: 'Finalizado' } },
+      { $set: { status: 'Finalizado' } },
+    );
+  }
+
   public delete(specialityId: string): Promise<unknown> {
     return AppointmentModel.findByIdAndDelete(specialityId);
   }
