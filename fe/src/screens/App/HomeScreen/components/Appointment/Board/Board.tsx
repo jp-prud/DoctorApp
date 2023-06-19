@@ -1,4 +1,4 @@
-import { useAppointmentContext } from "../../../../../../Context/AppointmentContext/AppointmentContext";
+import { useAppointmentContext } from "../../../../../../context/AppointmentContext/AppointmentContext";
 import { Text } from "../../../../../../components/atomic/Text";
 import { useModalContext } from "../../../../../../context/ModalContext/ModalContext";
 import { Appointment } from "../../../../AppointmentScreen/AppointmentScreen";

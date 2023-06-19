@@ -28,17 +28,13 @@ export function EditAppointmentModal() {
               label="Nome do paciente"
               name="patient-name"
               disabled
-              handleResetField={function (name: string): void {
-                throw new Error("Function not implemented.");
-              }}
+              handleResetField={() => console.log("")}
             />
             <ControlledTextInput
               control={control}
               label="Descrição"
               name="description"
-              handleResetField={function (name: string): void {
-                throw new Error("Function not implemented.");
-              }}
+              handleResetField={() => console.log("")}
             />
           </div>
         </div>

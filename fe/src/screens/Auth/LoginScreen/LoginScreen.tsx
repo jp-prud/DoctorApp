@@ -1,6 +1,6 @@
-import { LoginSocialGoogle, IResolveParams } from "reactjs-social-login";
+// import { LoginSocialGoogle, IResolveParams } from "reactjs-social-login";
 
-import { GoogleLoginButton } from "react-social-login-buttons";
+// import { GoogleLoginButton } from "react-social-login-buttons";
 
 import { Container } from "./styles";
 import { useCallback, useState } from "react";
@@ -9,9 +9,9 @@ export function LoginScreen() {
   const [provider, setProvider] = useState("");
   const [profile, setProfile] = useState<any>();
 
-  const onLoginStart = useCallback(() => {
-    alert("login start");
-  }, []);
+  // const onLoginStart = useCallback(() => {
+  //   alert("login start");
+  // }, []);
 
   const onLogoutSuccess = useCallback(() => {
     setProfile(null);
@@ -26,7 +26,7 @@ export function LoginScreen() {
 
   return (
     <Container>
-      <LoginSocialGoogle
+      {/* <LoginSocialGoogle
         client_id={
           "573569308325-jifa2prthfhbqa5qjm6e4pg46l4fqqvk.apps.googleusercontent.com"
         }
@@ -44,7 +44,7 @@ export function LoginScreen() {
         }}
       >
         <GoogleLoginButton />
-      </LoginSocialGoogle>
+      </LoginSocialGoogle> */}
     </Container>
   );
 }

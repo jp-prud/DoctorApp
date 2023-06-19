@@ -3,7 +3,9 @@ import styled, { css } from "styled-components";
 import { InputHTMLAttributes } from "react";
 import { FieldError } from "react-hook-form";
 
-export default styled.input<InputHTMLAttributes<HTMLInputElement> & FieldError>`
+export default styled.input<
+  InputHTMLAttributes<HTMLInputElement> & FieldError & any
+>`
   align-items: center;
   background: #fff;
   border-radius: 8px;
@@ -23,7 +25,7 @@ export default styled.input<InputHTMLAttributes<HTMLInputElement> & FieldError>`
       }
     `}
 
-  ${({ theme, error }) =>
+  ${({ theme, error }: any) =>
     error &&
     css`
       border-color: ${theme.COLORS.RED};

@@ -9,7 +9,7 @@ import { Layout } from "../Layout/Layout";
 import { GlobalStyles } from "../../assets/styles/GlobalStyles";
 
 import theme from "../../assets/styles/theme";
-import { AppointmentContextProvider } from "../../Context/AppointmentContext/AppointmentContext";
+import { AppointmentContextProvider } from "../../context/AppointmentContext/AppointmentContext";
 
 const queryClient = new QueryClient();
 

@@ -19,15 +19,13 @@ import { Appointment, Status } from "../AppointmentScreen/AppointmentScreen";
 import toast from "../../../utils/toast";
 import { AppointmentModal } from "./components/Appointment/Modal/Modal";
 
-import { useAppointmentContext } from "../../../Context/AppointmentContext/AppointmentContext";
-import { Text } from "../../../components/atomic/Text";
+import { useAppointmentContext } from "../../../context/AppointmentContext/AppointmentContext";
 import Button from "../../../components/atomic/Button/Button";
 
 export function HomeScreen() {
   const { data, isLoading, error } = useQuery("users", loadAppointments);
 
-  const { selectedAppointment, handleSelectedAppointment } =
-    useAppointmentContext();
+  const { selectedAppointment } = useAppointmentContext();
 
   const [finishAppointmentLoading, setFinishAppointmentLoading] =
     useState(false);

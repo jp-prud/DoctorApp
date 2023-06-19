@@ -1,4 +1,4 @@
-const FORMAT_DATE_OPTIONS = {
+const FORMAT_DATE_OPTIONS: Intl.DateTimeFormatOptions = {
   day: "2-digit",
   month: "2-digit",
   year: "numeric",

@@ -78,10 +78,8 @@ export function AppointmentScreen() {
               label: "Novo atendimento",
               onClick: () => toast({ message: { text: "Clicou" } }),
             }}
-            handleClickEdit={(entity: Appointment) => handleOpenModal()}
-            handleClickDelete={(entity: Appointment) => {
-              throw new Error("Function not implemented.");
-            }}
+            handleClickEdit={() => handleOpenModal()}
+            handleClickDelete={() => console.log()}
           />
         }
       />
