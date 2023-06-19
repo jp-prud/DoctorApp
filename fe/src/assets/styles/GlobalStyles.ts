@@ -77,7 +77,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: ${({ theme }) => theme.COLORS.GRAY_600};
+    background: ${({ theme }) => theme.COLORS.GRAY_100};
     color: ${({ theme }) => theme.COLORS.GRAY_500};
   }
 

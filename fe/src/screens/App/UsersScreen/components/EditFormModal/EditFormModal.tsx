@@ -1,21 +1,17 @@
 import { useForm } from "react-hook-form";
 import { ControlledTextInput } from "../../../../../components/Controller/ControlledTextInput/index";
 import { Modal } from "../../../../../components/Modal/Modal";
-import { User } from "../../UsersScreen";
 import { FormWrapper } from "../../styles";
 
 import {
   editUserModalSchemaTypes,
   editUserModalSchema,
 } from "./editFormModalSchema";
-
-type PartialUserFields = Pick<
-  User,
-  "name" | "email" | "phone" | "address" | "cpf"
->;
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useCallback } from "react";
 
 interface EditFormModalProps {
-  selectedUser: PartialUserFields;
+  selectedUser: editUserModalSchemaTypes;
   modalIsOpen: boolean;
   handleClickCloseModal(): void;
 }
@@ -25,11 +21,28 @@ export function EditFormModal({
   modalIsOpen,
   handleClickCloseModal,
 }: EditFormModalProps) {
-  const { control } = useForm<PartialUserFields>({
+  const { control, resetField } = useForm<editUserModalSchemaTypes>({
+    resolver: zodResolver(editUserModalSchema),
+    mode: "onChange",
+    defaultValues: {
+      name: "",
+      address: "",
+      cpf: "",
+      email: "",
+      phone: "",
+    },
+
     values: {
       ...selectedUser,
     },
   });
+
+  const handleClickResetField = useCallback(
+    (currentFieldName: keyof editUserModalSchemaTypes) => {
+      return resetField(currentFieldName);
+    },
+    [resetField]
+  );
 
   return (
     <Modal
@@ -44,14 +57,13 @@ export function EditFormModal({
           name="name"
           label="Nome"
           control={control}
-          handleResetField={(name: string) => console.log(name)}
-          type="text"
+          handleResetField={() => handleClickResetField("name")}
         />
 
         <ControlledTextInput
           name="email"
           label="E-mail"
-          handleResetField={(name: string) => console.log(name)}
+          handleResetField={() => handleClickResetField("email")}
           type="email"
           control={control}
         />
@@ -59,7 +71,7 @@ export function EditFormModal({
         <ControlledTextInput
           name="cpf"
           label="CPF"
-          handleResetField={(name: string) => console.log(name)}
+          handleResetField={() => handleClickResetField("cpf")}
           type="text"
           control={control}
           disabled
@@ -68,7 +80,7 @@ export function EditFormModal({
         <ControlledTextInput
           name="address"
           label="Endereço"
-          handleResetField={(name: string) => console.log(name)}
+          handleResetField={() => handleClickResetField("address")}
           type="text"
           control={control}
         />
@@ -76,7 +88,7 @@ export function EditFormModal({
         <ControlledTextInput
           name="phone"
           label="Telefone"
-          handleResetField={(name: string) => console.log(name)}
+          handleResetField={() => handleClickResetField("phone")}
           type="text"
           control={control}
         />

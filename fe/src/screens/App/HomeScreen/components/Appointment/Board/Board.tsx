@@ -1,3 +1,4 @@
+import { useAppointmentContext } from "../../../../../../Context/AppointmentContext/AppointmentContext";
 import { Text } from "../../../../../../components/atomic/Text";
 import { useModalContext } from "../../../../../../context/ModalContext/ModalContext";
 import { Appointment } from "../../../../AppointmentScreen/AppointmentScreen";
@@ -8,16 +9,16 @@ interface AppointmentBoardProps {
   title: string;
   icon: any;
   appointments: Appointment[];
-  onSelectAppointmentModal(selectedAppointment: Appointment): void;
 }
 
 export function AppointmentBoard({
   title,
   icon,
   appointments,
-  onSelectAppointmentModal,
 }: AppointmentBoardProps) {
   const { handleOpenModal } = useModalContext();
+
+  const { handleSelectedAppointment } = useAppointmentContext();
 
   return (
     <Container>
@@ -34,18 +35,22 @@ export function AppointmentBoard({
       <ul>
         {appointments.length > 0 && (
           <>
-            {appointments?.map((appointment) => (
-              <AppointmentCard
-                key={appointment._id}
-                patient={appointment.patient}
-                appointmentTime={appointment.appointmentTime}
-                onSelectAppointment={() => {
-                  onSelectAppointmentModal(appointment);
+            {appointments?.map((appointment) => {
+              return (
+                appointment?.patient?.name && (
+                  <AppointmentCard
+                    key={appointment._id}
+                    patient={appointment.patient}
+                    appointmentTime={appointment.appointmentTime}
+                    onSelectAppointment={() => {
+                      handleSelectedAppointment(appointment);
 
-                  handleOpenModal();
-                }}
-              />
-            ))}
+                      handleOpenModal();
+                    }}
+                  />
+                )
+              );
+            })}
           </>
         )}
       </ul>

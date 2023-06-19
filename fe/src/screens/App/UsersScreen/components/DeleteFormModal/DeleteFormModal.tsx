@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import Input from "../../../../../components/atomic/Input";
 import { Text } from "../../../../../components/atomic/Text";
 import { FormGroup } from "../../../../../components/FormGroup/index";
@@ -14,14 +15,28 @@ interface DeleteFormModalProps {
 export function DeleteFormModal({
   modalIsOpen,
   handleClickCloseModal,
-  selectedUser: { name, email },
+  selectedUser: { _id, name, email },
 }: DeleteFormModalProps) {
+  const handleDeletePatient = useCallback(
+    async (id = "") => {
+      await fetch(
+        `https://api-production-160a.up.railway.app/patienties/${id}`,
+        {
+          method: "delete",
+        }
+      );
+
+      handleClickCloseModal();
+    },
+    [handleClickCloseModal]
+  );
+
   return (
     <Modal
       title="Excluir Usuário"
       visible={modalIsOpen}
       onCancel={() => handleClickCloseModal()}
-      onConfirm={() => handleClickCloseModal()}
+      onConfirm={() => handleDeletePatient(_id)}
       cancelLabel="Manter Usuário"
       confirmLabel="Excluir Usuário"
       danger

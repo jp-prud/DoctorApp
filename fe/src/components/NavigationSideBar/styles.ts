@@ -8,8 +8,9 @@ export const Container = styled.div`
   max-width: 108px;
   height: 100vh;
   padding-top: 40px;
-  background-color: #000;
+  background-color: white;
   position: sticky;
+  box-shadow: 10px 0px 32px rgba(204, 204, 204, 0.1);
 
   .logo-wrapper {
     display: flex;

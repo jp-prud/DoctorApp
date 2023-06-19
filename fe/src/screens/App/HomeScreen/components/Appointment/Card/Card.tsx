@@ -16,7 +16,7 @@ export function AppointmentCard({
 }: AppointmentCardProps) {
   return (
     <Container onClick={onSelectAppointment}>
-      <Text weight="600">{patient.name}</Text>
+      <Text weight="600">{patient?.name}</Text>
       <Text weight="400">{formatDate(appointmentTime)}</Text>
     </Container>
   );

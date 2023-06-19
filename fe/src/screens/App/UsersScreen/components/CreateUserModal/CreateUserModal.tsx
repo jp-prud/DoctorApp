@@ -7,6 +7,8 @@ import {
   createUserModalSchemaTypes,
 } from "./createUserModalSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useCallback, useState } from "react";
+import toast from "../../../../../utils/toast";
 
 interface CreateFormModalProps {
   modalIsOpen: boolean;
@@ -17,6 +19,8 @@ export function CreateUserModal({
   modalIsOpen,
   handleClickCloseModal,
 }: CreateFormModalProps) {
+  const [isLoading, setIsLoading] = useState(false);
+
   const { control, handleSubmit, resetField } =
     useForm<createUserModalSchemaTypes>({
       resolver: zodResolver(createUserModalSchema),
@@ -30,15 +34,39 @@ export function CreateUserModal({
       },
     });
 
-  function handleClickCreateUserSubmit(data: createUserModalSchemaTypes) {
-    console.log(data);
+  async function handleClickCreateUserSubmit(data: createUserModalSchemaTypes) {
+    try {
+      setIsLoading(true);
+
+      await fetch("https://api-production-160a.up.railway.app/patienties", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      handleClickCloseModal();
+    } catch (error) {
+      console.log("Erro ao criar um novo usuário", error);
+
+      toast({
+        message: {
+          type: "danger",
+          text: "Erro ao criar um novo usuário, tente novamente!",
+        },
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
-  function handleClickResetField(
-    currentFieldName: keyof createUserModalSchemaTypes
-  ) {
-    return resetField(currentFieldName);
-  }
+  const handleClickResetField = useCallback(
+    (currentFieldName: keyof createUserModalSchemaTypes) => {
+      return resetField(currentFieldName);
+    },
+    [resetField]
+  );
 
   return (
     <Modal
@@ -46,6 +74,7 @@ export function CreateUserModal({
       visible={modalIsOpen}
       onConfirm={handleSubmit(handleClickCreateUserSubmit)}
       onCancel={() => handleClickCloseModal()}
+      isLoading={isLoading}
     >
       <ControlledTextInput
         control={control}

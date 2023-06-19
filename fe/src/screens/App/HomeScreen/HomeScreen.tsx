@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import { useQuery } from "react-query";
 
 import { Heading } from "../../../components/atomic/Heading/Heading";
@@ -21,13 +20,17 @@ import toast from "../../../utils/toast";
 import { AppointmentModal } from "./components/Appointment/Modal/Modal";
 
 import { useAppointmentContext } from "../../../Context/AppointmentContext/AppointmentContext";
-import { Modal } from "../../../components/Modal/Modal";
+import { Text } from "../../../components/atomic/Text";
+import Button from "../../../components/atomic/Button/Button";
 
 export function HomeScreen() {
   const { data, isLoading, error } = useQuery("users", loadAppointments);
 
   const { selectedAppointment, handleSelectedAppointment } =
     useAppointmentContext();
+
+  const [finishAppointmentLoading, setFinishAppointmentLoading] =
+    useState(false);
 
   async function loadAppointments() {
     const response = await fetch(
@@ -43,12 +46,49 @@ export function HomeScreen() {
     );
   }
 
+  function renderFinishAllAppointments() {
+    return (
+      <Button
+        className="finish-appointments-wrapper"
+        onClick={handleClickFinishAllAppointments}
+        title="Finalizar atendimentos"
+        isLoading={finishAppointmentLoading}
+        variant="link"
+      />
+    );
+  }
+
+  async function handleClickFinishAllAppointments() {
+    try {
+      setFinishAppointmentLoading(true);
+
+      await fetch(
+        "https://api-production-160a.up.railway.app/appointments/finishAll",
+        {
+          method: "post",
+        }
+      );
+    } catch (error) {
+      console.log("Ocorreu um erro ao finalizar os atendimentos", { error });
+
+      toast({
+        message: {
+          text: "Ocorreu um erro ao finalizar os atendimentos",
+          type: "danger",
+        },
+      });
+    } finally {
+      setFinishAppointmentLoading(false);
+    }
+  }
+
   return (
     <>
       <Heading
         title="Home"
         description="Acompanhe os atendimentos dos clientes"
         icon={HomeIcon}
+        RightComponent={renderFinishAllAppointments()}
       />
 
       {error &&
@@ -67,14 +107,12 @@ export function HomeScreen() {
             title="Aguardando"
             icon={ClockIcon}
             appointments={filterCurrentStatusAppointmentBoard("Aguardando")}
-            onSelectAppointmentModal={setSelectedAppointment}
           />
 
           <AppointmentBoard
             title="Em Atendimento"
             icon={MedicIcon}
             appointments={filterCurrentStatusAppointmentBoard("Em_Atendimento")}
-            onSelectAppointmentModal={setSelectedAppointment}
           />
 
           <AppointmentBoard
@@ -83,29 +121,18 @@ export function HomeScreen() {
             appointments={filterCurrentStatusAppointmentBoard(
               "Aguardando_Pagamento"
             )}
-            onSelectAppointmentModal={setSelectedAppointment}
           />
 
           <AppointmentBoard
             title="Finalizado"
             icon={CheckIcon}
             appointments={filterCurrentStatusAppointmentBoard("Finalizado")}
-            onSelectAppointmentModal={setSelectedAppointment}
           />
         </BoardWrapper>
       )}
 
       {selectedAppointment && (
-        <Modal
-          title={"Atendimento"}
-          visible={Boolean(selectedAppointment)}
-          onConfirm={() => handleSelectedAppointment(null)}
-          confirmLabel={
-            selectedAppointment.status === "Finalizado" ? "Arquivar" : "Avançar"
-          }
-        >
-          <Text>{selectedAppointment.patient.name}</Text>
-        </Modal>
+        <AppointmentModal appointment={selectedAppointment} />
       )}
     </>
   );

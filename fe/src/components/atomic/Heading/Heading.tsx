@@ -5,9 +5,10 @@ interface HeadingProps {
   title: string;
   description?: string;
   icon?: any;
+  RightComponent?: React.ReactNode
 }
 
-export function Heading({ title, description, icon }: HeadingProps) {
+export function Heading({ title, description, icon, RightComponent }: HeadingProps) {
   return (
     <Container>
       <div className="details">
@@ -25,6 +26,8 @@ export function Heading({ title, description, icon }: HeadingProps) {
           {description}
         </Text>
       </div>
+
+      {RightComponent && RightComponent}
     </Container>
   );
 }
